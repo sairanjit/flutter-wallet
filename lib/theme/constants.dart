@@ -17,3 +17,6 @@ const subLabelColor = Color(0xFF3D4C63);
 const bodyText1Color = Color(0xFF78839C);
 const bodyText2Color = Color(0xFF485068);
 const disabledStateColor = Color(0xFFCFD2D8);
+
+// background colors
+const backgroundColor = Color(0xFFEDF1F9);

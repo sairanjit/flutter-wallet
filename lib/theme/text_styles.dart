@@ -17,47 +17,47 @@ const headingText1Style = TextStyle(
   fontSize: 36.0,
   fontWeight: FontWeight.w700,
   color: primaryColor,
-  height: 56.0,
+  // height: 45.0,
 );
 
 const headingText2Style = TextStyle(
   fontSize: 32.0,
   fontWeight: FontWeight.w600,
   color: secondaryColor,
-  height: 32.0,
+  // height: 32.0,
 );
 
 const headingText3Style = TextStyle(
   fontSize: 26.0,
   fontWeight: FontWeight.w600,
   color: labelColor,
-  height: 32.0,
+  // height: 32.0,
 );
 
 const bodyText1Style = TextStyle(
   fontSize: 19.0,
   fontWeight: FontWeight.w400,
   color: bodyText1Color,
-  height: 24.0,
+  // height: 24.0,
 );
 
 const bodyText2Style = TextStyle(
   fontSize: 15.0,
   fontWeight: FontWeight.w400,
   color: bodyText2Color,
-  height: 24.0,
+  // height: 24.0,
 );
 
 const subTitleText1Style = TextStyle(
   fontSize: 15.0,
   fontWeight: FontWeight.w600,
   color: primaryColor,
-  height: 24.0,
+  // height: 24.0,
 );
 
 const subTitleText2Style = TextStyle(
   fontSize: 13.0,
   fontWeight: FontWeight.w400,
   color: bodyText2Color,
-  height: 24.0,
+  // height: 24.0,
 );
