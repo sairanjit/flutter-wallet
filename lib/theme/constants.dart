@@ -9,3 +9,11 @@ const warningColor = Color(0xFFFDB32A);
 const errorColor = Color(0xFFDF5060);
 
 const defaultPadding = 20.0;
+
+// Text Colors
+
+const labelColor = Color(0xFFB5BBC9);
+const subLabelColor = Color(0xFF3D4C63);
+const bodyText1Color = Color(0xFF78839C);
+const bodyText2Color = Color(0xFF485068);
+const disabledStateColor = Color(0xFFCFD2D8);

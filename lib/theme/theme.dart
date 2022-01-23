@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'constants.dart';
+import 'text_styles.dart';
 
 ThemeData lightThemeData(BuildContext context) {
   return ThemeData.light().copyWith(
@@ -9,8 +10,7 @@ ThemeData lightThemeData(BuildContext context) {
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: appBarTheme,
     iconTheme: const IconThemeData(color: contentColorLightTheme),
-    textTheme: GoogleFonts.titilliumWebTextTheme(Theme.of(context).textTheme)
-        .apply(bodyColor: contentColorLightTheme),
+    textTheme: GoogleFonts.titilliumWebTextTheme(textTheme),
     colorScheme: const ColorScheme.light(
       primary: primaryColor,
       secondary: secondaryColor,
@@ -34,8 +34,7 @@ ThemeData darkThemeData(BuildContext context) {
     scaffoldBackgroundColor: contentColorLightTheme,
     appBarTheme: appBarTheme,
     iconTheme: const IconThemeData(color: contentColorDarkTheme),
-    textTheme: GoogleFonts.titilliumWebTextTheme(Theme.of(context).textTheme)
-        .apply(bodyColor: contentColorDarkTheme),
+    textTheme: GoogleFonts.titilliumWebTextTheme(textTheme),
     colorScheme: const ColorScheme.dark().copyWith(
       primary: primaryColor,
       secondary: secondaryColor,
