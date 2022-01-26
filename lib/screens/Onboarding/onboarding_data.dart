@@ -1,6 +1,6 @@
 import 'package:flutter_wallet/models/onboarding/onboarding.dart';
 
-List onboardingData = [
+List<Onboarding> onboardingData = [
   Onboarding(
     id: 1,
     title: "Welcome to \nWallet",
