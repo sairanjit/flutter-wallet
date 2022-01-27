@@ -57,6 +57,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     currentIndex: _current,
                     onNextPress: () => _controller.nextPage(),
                     onSkipPress: jumpToLastPage,
+                    onDonePress: () => print('Done'),
                   );
                 },
               );

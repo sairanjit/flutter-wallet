@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_wallet/theme/constants.dart';
 import 'package:flutter_wallet/widgets/buttons/outline_button.dart';
+import 'package:flutter_wallet/widgets/buttons/primary_button.dart';
 import 'package:flutter_wallet/widgets/buttons/transparent_button.dart';
 
 class OnboardingWidget extends StatelessWidget {
@@ -13,6 +14,7 @@ class OnboardingWidget extends StatelessWidget {
     required this.currentIndex,
     required this.onNextPress,
     required this.onSkipPress,
+    required this.onDonePress,
   }) : super(key: key);
 
   final String title;
@@ -21,6 +23,7 @@ class OnboardingWidget extends StatelessWidget {
   final int currentIndex;
   final void Function() onNextPress;
   final void Function() onSkipPress;
+  final void Function() onDonePress;
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +39,16 @@ class OnboardingWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 40),
                 child: SvgPicture.asset(image),
               ),
-              Positioned(
-                top: 50,
-                right: 40,
-                child: TransparentButton(
-                  title: 'Skip',
-                  onPress: onSkipPress,
-                ),
-              ),
+              currentIndex < 4
+                  ? Positioned(
+                      top: 50,
+                      right: 40,
+                      child: TransparentButton(
+                        title: 'Skip',
+                        onPress: onSkipPress,
+                      ),
+                    )
+                  : Container(),
             ],
           ),
           Expanded(
@@ -100,10 +105,15 @@ class OnboardingWidget extends StatelessWidget {
                   const SizedBox(
                     height: 120,
                   ),
-                  OutlinerButton(
-                    title: 'Next Step',
-                    onPress: onNextPress,
-                  ),
+                  currentIndex < 4
+                      ? OutlinerButton(
+                          title: 'Next Step',
+                          onPress: onNextPress,
+                        )
+                      : PrimaryButton(
+                          title: 'Lets Get Started',
+                          onPress: onDonePress,
+                        ),
                 ],
               ),
             ),
