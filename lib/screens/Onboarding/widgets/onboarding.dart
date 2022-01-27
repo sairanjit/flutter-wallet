@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_wallet/theme/constants.dart';
+import 'package:flutter_wallet/widgets/buttons/outline_button.dart';
+import 'package:flutter_wallet/widgets/buttons/transparent_button.dart';
 
 class OnboardingWidget extends StatelessWidget {
   const OnboardingWidget({
@@ -9,12 +11,16 @@ class OnboardingWidget extends StatelessWidget {
     required this.description,
     required this.image,
     required this.currentIndex,
+    required this.onNextPress,
+    required this.onSkipPress,
   }) : super(key: key);
 
   final String title;
   final String description;
   final String image;
   final int currentIndex;
+  final void Function() onNextPress;
+  final void Function() onSkipPress;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +28,23 @@ class OnboardingWidget extends StatelessWidget {
       color: backgroundColor,
       child: Column(
         children: [
-          Container(
-            height: 350,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(vertical: 40),
-            child: SvgPicture.asset(image),
+          Stack(
+            children: [
+              Container(
+                height: 350,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(vertical: 40),
+                child: SvgPicture.asset(image),
+              ),
+              Positioned(
+                top: 50,
+                right: 40,
+                child: TransparentButton(
+                  title: 'Skip',
+                  onPress: onSkipPress,
+                ),
+              ),
+            ],
           ),
           Expanded(
             child: Container(
@@ -40,27 +58,31 @@ class OnboardingWidget extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [1, 2, 3, 4].map((entry) {
-                      return GestureDetector(
-                        onTap: () => {},
-                        child: Container(
-                          width: 12.0,
-                          height: 12.0,
-                          margin: const EdgeInsets.symmetric(
-                            vertical: 8.0,
-                            horizontal: 4.0,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 30,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [1, 2, 3, 4].map((entry) {
+                        return GestureDetector(
+                          onTap: () => {},
+                          child: Container(
+                            width: 12.0,
+                            height: 12.0,
+                            margin: const EdgeInsets.symmetric(
+                              horizontal: 4.0,
+                            ),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: currentIndex == entry
+                                  ? primaryColor
+                                  : backgroundColor,
+                            ),
                           ),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: currentIndex == entry
-                                ? primaryColor
-                                : backgroundColor,
-                          ),
-                        ),
-                      );
-                    }).toList(),
+                        );
+                      }).toList(),
+                    ),
                   ),
                   Text(
                     title,
@@ -74,7 +96,14 @@ class OnboardingWidget extends StatelessWidget {
                     description,
                     style: Theme.of(context).textTheme.bodyText2,
                     textAlign: TextAlign.center,
-                  )
+                  ),
+                  const SizedBox(
+                    height: 120,
+                  ),
+                  OutlinerButton(
+                    title: 'Next Step',
+                    onPress: onNextPress,
+                  ),
                 ],
               ),
             ),

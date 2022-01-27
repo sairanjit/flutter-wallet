@@ -14,6 +14,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int _current = 1;
   final CarouselController _controller = CarouselController();
 
+  void updateCurrentPage(int index) {
+    setState(() {
+      if (index == _current) {
+        _current = _current + 1;
+      } else if (_current > index) {
+        _current = _current - 1;
+      }
+    });
+  }
+
+  void jumpToLastPage() {
+    _controller.jumpToPage(3);
+    setState(() {
+      _current = 4;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,13 +44,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               enlargeCenterPage: false,
               enableInfiniteScroll: false,
               onPageChanged: (index, reason) {
-                setState(() {
-                  if (index == _current) {
-                    _current = _current + 1;
-                  } else if (_current > index) {
-                    _current = _current - 1;
-                  }
-                });
+                updateCurrentPage(index);
               },
             ),
             items: onboardingData.map((item) {
@@ -44,6 +55,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     description: item.description,
                     image: item.image,
                     currentIndex: _current,
+                    onNextPress: () => _controller.nextPage(),
+                    onSkipPress: jumpToLastPage,
                   );
                 },
               );
